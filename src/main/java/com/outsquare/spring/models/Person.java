@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.List;
 
 @Getter
 @Setter
@@ -43,4 +44,15 @@ public class Person {
     @Column(name = "role")
     private String role;
 
+    @Column(name = "avatar")
+    private String avatar;
+
+    @OneToMany(mappedBy = "person")
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "person")
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "person")
+    private List<PostLike> postLikes;
 }

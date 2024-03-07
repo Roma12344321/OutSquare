@@ -49,7 +49,7 @@ public class SecurityConfig {
         http.csrf(csrf->csrf.disable())
                 .authenticationManager(authenticationManager)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/login", "/api/v1/auth/registration").permitAll()
+                        .requestMatchers("/auth/login", "/auth/registration","/post").permitAll()
                         .requestMatchers("/admin","/people/all").hasRole("ADMIN")
                         .anyRequest().hasAnyRole("USER","ADMIN"));
         http.formLogin(form -> form

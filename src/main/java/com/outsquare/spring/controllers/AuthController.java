@@ -23,7 +23,7 @@ import java.util.Map;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/auth")
 public class AuthController {
 
     private final PersonValidator personValidator;
@@ -36,7 +36,6 @@ public class AuthController {
     @PostMapping("/registration")
     public Map<String, String> performRegistration(@RequestBody @Valid PersonDto personDto, BindingResult bindingResult) {
         Person person = personMapper.mapPersonDtoToPerson(personDto);
-        System.out.println(person);
         personValidator.validate(person, bindingResult);
         if (bindingResult.hasErrors()) {
             return Map.of("message", "error");
